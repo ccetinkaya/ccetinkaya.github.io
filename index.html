@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090c16">
 <meta name="description" content="Signalwerk – eine Startseite rund um KI und Cybersicherheit.">
 <title>Signalwerk — KI &amp; Cybersicherheit</title>
+<meta name="description" content="Signalwerk – a homepage about AI and cybersecurity.">
+<title>Signalwerk — AI &amp; Cybersecurity</title>
 <style>
   :root {
     color-scheme: dark;
@@ -89,16 +92,24 @@
 <body>
 <a class="skip" href="#start">Zum Inhalt</a>
 <header id="oben">
+<a class="skip" href="#home">Skip to content</a>
+<header id="top">
   <div class="wrap bar">
     <a class="brand" href="#oben"><span class="mark" aria-hidden="true"></span>Signalwerk</a>
     <nav aria-label="Hauptnavigation">
       <a href="#start">Start</a>
       <a href="#ki">KI</a>
       <a href="#cybersicherheit">Cybersicherheit</a>
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>Signalwerk</a>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#ai">AI</a>
+      <a href="#cybersecurity">Cybersecurity</a>
     </nav>
   </div>
 </header>
 <main id="start">
+<main id="home">
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div>
@@ -106,9 +117,14 @@
         <h1 id="hero-title">Signale erkennen. <span>Risiken verstehen.</span></h1>
         <p class="intro">Wie KI Muster in Sicherheitsdaten sichtbar macht und worauf es bei der Bewertung von Warnmeldungen ankommt.</p>
         <a class="button" href="#themen">Themen entdecken</a>
+        <div class="eyebrow">AI &amp; Cybersecurity</div>
+        <h1 id="hero-title">Spot signals. <span>Understand risks.</span></h1>
+        <p class="intro">How AI reveals patterns in security data and what matters when assessing alerts.</p>
+        <a class="button" href="#topics">Explore topics</a>
       </div>
       <figure class="panel">
         <figcaption class="label">Signalvisualisierung</figcaption>
+        <figcaption class="label">Signal visualization</figcaption>
         <div class="display" aria-hidden="true">
           <div class="rings"><div class="orbit"></div><div class="core"></div></div>
         </div>
@@ -116,18 +132,28 @@
     </div>
   </section>
   <section class="topics" id="themen" aria-labelledby="themen-title">
+  <section class="topics" id="topics" aria-labelledby="topics-title">
     <div class="wrap">
       <h2 id="themen-title">Themen im Überblick</h2>
+      <h2 id="topics-title">Topics at a glance</h2>
       <div class="cards">
         <article id="ki">
           <div class="topic">Künstliche Intelligenz</div>
           <h3>Muster in Daten erkennen</h3>
           <p>Modelle können ungewöhnliche Anmeldezeiten oder Zugriffsmuster hervorheben. Welche davon relevant sind, hängt vom Kontext ab.</p>
+        <article id="ai">
+          <div class="topic">Artificial intelligence</div>
+          <h3>Spot patterns in data</h3>
+          <p>Models can flag unusual login times or access patterns. Context helps determine which ones matter.</p>
         </article>
         <article id="cybersicherheit">
           <div class="topic">Cybersicherheit</div>
           <h3>Warnmeldungen einordnen</h3>
           <p>Wer hat worauf zugegriffen? Der Abgleich mit Berechtigungen und bekannten Aktivitäten hilft, Warnmeldungen zu priorisieren.</p>
+        <article id="cybersecurity">
+          <div class="topic">Cybersecurity</div>
+          <h3>Put alerts in context</h3>
+          <p>Who accessed what? Checking access against permissions and known activity helps prioritize alerts.</p>
         </article>
       </div>
     </div>
@@ -135,6 +161,7 @@
 </main>
 <footer>
   <div class="wrap foot"><span>Signalwerk</span><a href="#oben">Nach oben</a></div>
+  <div class="wrap foot"><span>Signalwerk</span><a href="#top">Back to top</a></div>
 </footer>
 </body>
 </html>
