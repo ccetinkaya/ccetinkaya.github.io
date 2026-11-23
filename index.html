@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090c16">
+<meta name="description" content="Signalwerk – eine Startseite rund um KI und Cybersicherheit.">
+<title>Signalwerk — KI &amp; Cybersicherheit</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #090c16;
+    --ink: #f1f4fc;
+    --muted: #a9b4cc;
+    --cyan: #79f8ef;
+    --violet: #b49aff;
+    --line: #ffffff24;
+    font-family: system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--ink); background: var(--bg); line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+  .wrap { width: min(1160px, calc(100% - 3rem)); margin-inline: auto; }
+  .skip { position: absolute; top: .75rem; left: .75rem; z-index: 2; transform: translateY(-200%); background: var(--bg); padding: .5rem 1rem; }
+  .skip:focus { transform: none; }
+  header { border-bottom: 1px solid var(--line); }
+  .bar, nav, .brand { display: flex; align-items: center; }
+  .bar { min-height: 76px; justify-content: space-between; gap: .6rem 2rem; flex-wrap: wrap; }
+  .brand { gap: .8rem; font-weight: 750; letter-spacing: -.03em; }
+  .mark { width: 18px; aspect-ratio: 1; border: 2px solid var(--cyan); border-radius: 4px; transform: rotate(45deg); box-shadow: 0 0 16px #79f8ef55; }
+  nav { flex-wrap: wrap; gap: .3rem clamp(.9rem, 3vw, 2rem); color: var(--muted); font-size: .9375rem; }
+  nav a { padding-block: .4rem; }
+  nav a:hover, footer a:hover { color: var(--cyan); }
+  .hero {
+    background: radial-gradient(ellipse at 76% 47%, #21183f 0%, transparent 57%),
+      radial-gradient(ellipse at 15% 75%, #0b222d 0%, transparent 48%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.14fr 1fr; align-items: center; gap: clamp(1.5rem, 5vw, 5rem); padding-block: clamp(4rem, 9vw, 8rem); }
+  .eyebrow, .label, .topic { font: 600 .875rem/1.5 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
+  .eyebrow, .topic { color: var(--cyan); }
+  h1 { max-width: 12ch; margin: .8rem 0 1.4rem; font-size: clamp(2.65rem, 6vw, 5.25rem); line-height: 1.03; letter-spacing: -.065em; }
+  h1 span { display: block; color: var(--cyan); background: linear-gradient(100deg, var(--cyan), var(--violet)); background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro { max-width: 42ch; margin: 0 0 2rem; color: var(--muted); font-size: clamp(1rem, 2vw, 1.2rem); }
+  .button { display: inline-block; background: var(--cyan); color: #09161b; padding: .8rem 1.2rem; font-weight: 750; border-radius: .55rem; }
+  .button:hover { background: #bafff9; }
+  .panel { margin: 0; overflow: hidden; border: 1px solid #a9b4cc42; border-radius: 1.2rem; background: #0d1020; box-shadow: 0 24px 80px #0006; }
+  .panel figcaption { padding: .9rem 1.2rem; border-bottom: 1px solid var(--line); color: var(--muted); }
+  .display {
+    position: relative; display: grid; place-items: center; aspect-ratio: 1.16;
+    overflow: hidden; isolation: isolate;
+    background-image: linear-gradient(#a9b4cc14 1px, transparent 1px), linear-gradient(90deg, #a9b4cc14 1px, transparent 1px);
+    background-size: 26px 26px; background-position: center;
+  }
+  .display::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle, #5935ac42, #0d1020 85%); }
+  .rings { position: relative; display: grid; place-items: center; width: 68%; aspect-ratio: 1; border: 1px solid #b49aff53; border-radius: 50%; }
+  .rings::before, .rings::after { content: ""; position: absolute; border-radius: 50%; }
+  .rings::before { inset: 10%; border: 1px dashed #b49aff80; }
+  .rings::after { inset: 21%; border: 1px solid #79f8ef70; }
+  .orbit { position: absolute; inset: 0; z-index: 1; animation: orbit 24s linear infinite; }
+  .orbit::before { content: ""; position: absolute; left: 50%; top: 0; width: 8px; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: var(--cyan); box-shadow: 0 0 16px var(--cyan); }
+  .core { width: 30%; aspect-ratio: 1; transform: rotate(45deg); border-radius: 20%; border: 1px solid var(--cyan); background: linear-gradient(150deg, #204d61, #38255e); box-shadow: 0 0 36px #79f8ef35, inset 0 0 20px #b49aff35; }
+  @keyframes orbit { to { transform: rotate(360deg); } }
+  .topics { border-top: 1px solid var(--line); padding-block: 3.5rem 4rem; }
+  h2 { margin: 0 0 1.3rem; font-size: clamp(1.65rem, 3vw, 2.35rem); letter-spacing: -.04em; }
+  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  article { padding: clamp(1.1rem, 3vw, 1.8rem); border: 1px solid var(--line); border-radius: .85rem; background: #101525; }
+  article:nth-child(2) .topic { color: var(--violet); }
+  h3 { margin: .45rem 0; font-size: 1.25rem; }
+  article p { color: var(--muted); margin: 0; }
+  footer { border-top: 1px solid var(--line); padding-block: 1.3rem; color: var(--muted); }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; }
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr); }
+    .panel { width: min(100%, 29rem); }
+  }
+  @media (max-width: 480px) {
+    .wrap { width: calc(100% - 2rem); }
+    .bar { padding-block: .85rem; }
+    .cards { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root { scroll-behavior: auto; }
+    .orbit { animation: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#start">Zum Inhalt</a>
+<header id="oben">
+  <div class="wrap bar">
+    <a class="brand" href="#oben"><span class="mark" aria-hidden="true"></span>Signalwerk</a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#start">Start</a>
+      <a href="#ki">KI</a>
+      <a href="#cybersicherheit">Cybersicherheit</a>
+    </nav>
+  </div>
+</header>
+<main id="start">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">KI &amp; Cybersicherheit</div>
+        <h1 id="hero-title">Signale erkennen. <span>Risiken verstehen.</span></h1>
+        <p class="intro">Wie KI Muster in Sicherheitsdaten sichtbar macht und worauf es bei der Bewertung von Warnmeldungen ankommt.</p>
+        <a class="button" href="#themen">Themen entdecken</a>
+      </div>
+      <figure class="panel">
+        <figcaption class="label">Signalvisualisierung</figcaption>
+        <div class="display" aria-hidden="true">
+          <div class="rings"><div class="orbit"></div><div class="core"></div></div>
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section class="topics" id="themen" aria-labelledby="themen-title">
+    <div class="wrap">
+      <h2 id="themen-title">Themen im Überblick</h2>
+      <div class="cards">
+        <article id="ki">
+          <div class="topic">Künstliche Intelligenz</div>
+          <h3>Muster in Daten erkennen</h3>
+          <p>Modelle können ungewöhnliche Anmeldezeiten oder Zugriffsmuster hervorheben. Welche davon relevant sind, hängt vom Kontext ab.</p>
+        </article>
+        <article id="cybersicherheit">
+          <div class="topic">Cybersicherheit</div>
+          <h3>Warnmeldungen einordnen</h3>
+          <p>Wer hat worauf zugegriffen? Der Abgleich mit Berechtigungen und bekannten Aktivitäten hilft, Warnmeldungen zu priorisieren.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot"><span>Signalwerk</span><a href="#oben">Nach oben</a></div>
+</footer>
+</body>
+</html>
